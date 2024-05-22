@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/pureboard/react-native-pure-overlay#readme",
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-native": "0.74.1"
+    "react": "*",
+    "react-native": "*"
   },
   "devDependencies": {
     "@types/react": "^18.2.6"
