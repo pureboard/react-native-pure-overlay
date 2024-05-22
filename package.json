@@ -1,0 +1,30 @@
+{
+  "name": "@pureboard/react-native-pure-overlay",
+  "version": "1.0.0",
+  "description": "Easy, Light, Awesome react native overlay library.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pureboard/react-native-pure-overlay.git"
+  },
+  "author": "@pureboard <ehdrnr9346@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/pureboard/react-native-pure-overlay/issues"
+  },
+  "homepage": "https://github.com/pureboard/react-native-pure-overlay#readme",
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-native": "0.74.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.6"
+  }
+}
