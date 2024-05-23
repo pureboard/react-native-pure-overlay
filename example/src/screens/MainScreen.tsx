@@ -63,7 +63,7 @@ const MainScreen = () => {
         onPressMainButton: closeModal,
         subButtonLabel: "cancel",
         onPressSubButton: closeModal,
-        onBackdropPress: closeModal,
+        onPressBackDrop: closeModal,
       };
     });
 
@@ -88,7 +88,7 @@ const MainScreen = () => {
         onPressMainButton: closeModal,
         subButtonLabel: "cancel",
         onPressSubButton: closeModal,
-        onBackdropPress: closeModal,
+        onPressBackDrop: closeModal,
       };
     });
 
@@ -101,7 +101,7 @@ const MainScreen = () => {
       body: "nice to meet you!",
       rightButtonLabel: "confirm",
       onPressRightButton: closeCustomModal,
-      onBackdropPress: closeCustomModal,
+      onPressBackDrop: closeCustomModal,
       onPressLeftButton: closeCustomModal,
     });
   };
@@ -114,7 +114,7 @@ const MainScreen = () => {
       onPressRightButton: closeCustomModal,
       leftButtonLabel: "cancel",
       onPressLeftButton: closeCustomModal,
-      onBackdropPress: closeCustomModal,
+      onPressBackDrop: closeCustomModal,
     });
 
     Alert.alert(action);
@@ -123,7 +123,7 @@ const MainScreen = () => {
   const openSampleBottomSheet = () => {
     openBottomSheet({
       title: "Hello, Pure!",
-      onBackdropPress: closeBottomSheet,
+      onPressBackDrop: closeBottomSheet,
       onPressClose: closeBottomSheet,
       content: "this is normal bottom sheet",
     });
@@ -132,8 +132,8 @@ const MainScreen = () => {
   const openSampleDeferredBottomSheet = async () => {
     const action = await openDeferredBottomSheet({
       title: "Hello, PureDeferredBottomSheet!",
-      onBackdropPress: closeBottomSheet,
-      onBackButtonPress: closeBottomSheet,
+      onPressBackDrop: closeBottomSheet,
+      onPressBackButton: closeBottomSheet,
       buttonLabel: "resolve!",
       onPressButton: closeBottomSheet,
     });

@@ -1,5 +1,5 @@
 export interface BasePureMoalProps {
-  onBackdropPress?: () => void;
-  onBackButtonPress?: () => void;
+  onPressBackDrop?: () => void;
+  onPressBackButton?: () => void;
   backgroundOpacity?: number;
 }

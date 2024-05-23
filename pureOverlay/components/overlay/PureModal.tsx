@@ -35,15 +35,15 @@ export const getPureModal = <PropList extends OverlayPropList>() => {
 
       const props = typeof _props === "function" ? _props(d) : { ..._props };
 
-      const onBackButtonPress = () => {
-        if (props.onBackButtonPress) {
-          props.onBackButtonPress();
+      const onPressBackButton = () => {
+        if (props.onPressBackButton) {
+          props.onPressBackButton();
           d.resolve("pressedBackButton" as PureModalResolveType<P>);
         }
       };
-      const onBackdropPress = () => {
-        if (props.onBackdropPress) {
-          props.onBackdropPress();
+      const onPressBackDrop = () => {
+        if (props.onPressBackDrop) {
+          props.onPressBackDrop();
           d.resolve("pressedBackDrop" as PureModalResolveType<P>);
         }
       };
@@ -69,8 +69,8 @@ export const getPureModal = <PropList extends OverlayPropList>() => {
 
       setOverlayProps({
         ...props,
-        onBackButtonPress,
-        onBackdropPress,
+        onPressBackButton,
+        onPressBackDrop,
         ...customKeys,
       });
       return d.promise;
@@ -85,8 +85,8 @@ export const getPureModal = <PropList extends OverlayPropList>() => {
 
     return overlayProps ? (
       <OverlayBackground
-        onBackButtonPress={overlayProps?.onBackButtonPress}
-        onBackDropPress={overlayProps?.onBackdropPress}
+        onPressBackButton={overlayProps?.onPressBackButton}
+        onPressBackDrop={overlayProps?.onPressBackDrop}
         opacity={overlayProps?.backgroundOpacity}
       >
         <Pressable>

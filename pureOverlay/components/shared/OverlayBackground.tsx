@@ -12,24 +12,24 @@ import useAndroidBackHandler from "../../hooks/useAndroidBackHandler";
 interface OverlayBackgroundProps {
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
-  onBackButtonPress?: () => void;
-  onBackDropPress?: () => void;
+  onPressBackButton?: () => void;
+  onPressBackDrop?: () => void;
   opacity?: number;
 }
 
 const OverlayBackground = ({
   children,
   style,
-  onBackButtonPress,
-  onBackDropPress,
+  onPressBackButton,
+  onPressBackDrop,
   opacity = 0.3,
 }: OverlayBackgroundProps) => {
   const { width, height } = useWindowDimensions();
 
   const onBackPress = useCallback(() => {
-    onBackButtonPress?.();
+    onPressBackButton?.();
     return true;
-  }, [onBackButtonPress]);
+  }, [onPressBackButton]);
 
   //안드로이드 물리버튼 핸들링을 위해 listener 등록
   useAndroidBackHandler({ onBackPress });
@@ -37,7 +37,7 @@ const OverlayBackground = ({
   return (
     <Pressable
       style={[styles.container, { width, height }, style]}
-      onPress={onBackDropPress}
+      onPress={onPressBackDrop}
     >
       <View
         style={[
