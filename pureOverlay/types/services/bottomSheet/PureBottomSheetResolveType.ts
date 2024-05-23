@@ -1,4 +1,6 @@
-type BasePureBottomSheetResolveType = 'pressedBackButton' | 'pressedBackDrop';
+import { PureOverlayResolveType } from "../common/PureOverlayResolveType";
+
+type BasePureBottomSheetResolveType = "pressedBackButton" | "pressedBackDrop";
 
 export type PureBottomSheetResolveType<T = undefined> = PureOverlayResolveType<
   BasePureBottomSheetResolveType,
