@@ -1,6 +1,6 @@
 {
   "name": "@pureboard/react-native-pure-overlay",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Easy, Light, Awesome react native overlay library.",
   "main": "index.ts",
   "scripts": {
