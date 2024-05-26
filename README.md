@@ -6,6 +6,8 @@ react-native-pure-overlay는 최소한의 dependance로 modal, bottom sheet, loa
 
 react-native-pure-overlay를 사용하면 더이상 매번 스크린에 모달 컴포넌트를 배치하고 visible state를 선언하고 props를 넘길 필요 없이 선언적으로 모달을 관리할 수 있습니다.
 
+https://github.com/pureboard/react-native-pure-overlay/assets/30457954/020ab676-eb99-4d86-baab-471c32eb0bb2
+
 ```tsx
 const { openModal, closeModal } = usePureModal();
 
@@ -38,10 +40,10 @@ const onPressSubmit = async () => {
 # Installation
 
 ```
-npm install react-native-pure-overlay
+npm install @pureboard/react-native-pure-overlay
 
 # or using yarn
-yarn add react-native-pure-overlay
+yarn add @pureboard/react-native-pure-overlay
 ```
 
 # Usage
