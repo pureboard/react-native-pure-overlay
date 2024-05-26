@@ -40,10 +40,10 @@ const onPressSubmit = async () => {
 # Installation
 
 ```
-npm install react-native-pure-overlay
+npm install @pureboard/react-native-pure-overlay
 
 # or using yarn
-yarn add react-native-pure-overlay
+yarn add @pureboard/react-native-pure-overlay
 ```
 
 # Usage
