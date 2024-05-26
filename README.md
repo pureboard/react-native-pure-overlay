@@ -2,11 +2,9 @@
 
 > Easy, Light, Awesome react native overlay library. Whether it's a modal, bottom sheet, alert, loading screen, or anything else you need, this library can handle it all.
 
-react-native-pure-overlay는 최소한의 dependance로 modal, bottom sheet, loading 등 overlay component를 선언적으로 제어하기 위해 만들어졌습니다. 모두 View, Pressable, Animated 등 react-native 내장 객체를 이용해 만들었으며, ios에서 여러가지 제약사항을 가진 Modal 컴포넌트는 사용하지 않았습니다. (현재는 Modal, BottomSheet, Loading을 지원하지만 앞으로 SnackBar, Toast 등을 추가 지원할 예정입니다.)
+react-native-pure-overlay는 최소한의 dependancy로 modal, bottom sheet, loading 등 overlay component를 선언적으로 제어하기 위해 만들어졌습니다. 모두 View, Pressable, Animated 등 react-native 내장 객체를 이용해 만들었으며, ios에서 여러가지 제약사항을 가진 Modal 컴포넌트는 사용하지 않았습니다. (현재는 Modal, BottomSheet, Loading을 지원하지만 앞으로 SnackBar, Toast 등을 추가 지원할 예정입니다.)
 
 react-native-pure-overlay를 사용하면 더이상 매번 스크린에 모달 컴포넌트를 배치하고 visible state를 선언하고 props를 넘길 필요 없이 선언적으로 모달을 관리할 수 있습니다.
-
-https://github.com/pureboard/react-native-pure-overlay/assets/30457954/020ab676-eb99-4d86-baab-471c32eb0bb2
 
 ```tsx
 const { openModal, closeModal } = usePureModal();
