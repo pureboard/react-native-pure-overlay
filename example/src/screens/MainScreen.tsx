@@ -91,8 +91,25 @@ const MainScreen = () => {
       title: 'Hello, PureDeferredBottomSheet!',
       onPressBackDrop: closeBottomSheet,
       onPressBackButton: closeBottomSheet,
+      content: (
+        <View>
+          <Text>this is</Text>
+          <Text style={{ color: 'green' }}>Deferred Bottom Sheet!</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+          <Text>Coooooooooool</Text>
+        </View>
+      ),
       buttonLabel: 'resolve!',
       onPressButton: closeBottomSheet,
+      onPressClose: closeBottomSheet,
     });
 
     Alert.alert(action);

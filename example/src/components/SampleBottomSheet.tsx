@@ -17,18 +17,42 @@ export const SampleBottomSheet = ({
   onPressButton,
 }: SampleBottomSheetProps) => {
   return (
-    <View style={{ width: '100%' }}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Text>{title}</Text>
+    <View style={{ width: '100%', padding: 16 }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <Text style={{ fontSize: 18 }}>{title}</Text>
         <TouchableOpacity onPress={onPressClose}>
           <Text>close</Text>
         </TouchableOpacity>
       </View>
-      {React.isValidElement(content) ? content : <Text>{content}</Text>}
+      <View style={{ marginTop: 12, flex: 1 }}>
+        {React.isValidElement(content) ? content : <Text>{content}</Text>}
+      </View>
 
-      <TouchableOpacity onPress={onPressButton}>
-        <Text>{buttonLabel}</Text>
-      </TouchableOpacity>
+      {buttonLabel ? (
+        <TouchableOpacity
+          onPress={onPressButton}
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'green',
+            borderRadius: 12,
+            paddingVertical: 12,
+            marginTop: 12,
+            marginBottom: 24,
+          }}
+        >
+          <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>
+            {buttonLabel}
+          </Text>
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 };
