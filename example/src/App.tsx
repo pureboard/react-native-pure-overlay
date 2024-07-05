@@ -1,31 +1,35 @@
-import * as React from 'react';
+import React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-pure-overlay';
+import { createPureOverlay } from 'react-native-pure-overlay';
+import DefaultModal from './components/DefaultModal';
+import { SampleBottomSheet } from './components/SampleBottomSheet';
+import type { ProjectOverlayPropList } from './screens/MainScreen';
+import MainScreen from './screens/MainScreen';
 
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+const PureOverlay = createPureOverlay<ProjectOverlayPropList>();
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <PureOverlay.Provider>
+      <MainScreen />
+      <PureOverlay.Modal
+        Component={DefaultModal}
+        resolveKeys={{
+          onPressMainButton: 'pressedMainButton',
+          onPressSubButton: 'pressedSubButton',
+        }}
+        overlayId={'default'}
+      />
+      <PureOverlay.BottomSheet
+        Component={SampleBottomSheet}
+        resolveKeys={{
+          onPressButton: 'pressedButton',
+          onPressClose: 'pressedCloseButton',
+        }}
+        overlayId={'sample'}
+      />
+      <PureOverlay.Loading overlayId={'loading'} />
+    </PureOverlay.Provider>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
+};
+export default App;
