@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Pressable, StyleSheet, useWindowDimensions } from 'react-native';
 import { useLayout } from '../../hooks/useLayout';
 import { useSetPureBottomSheetHandler } from '../../providers/Provider';
 
@@ -112,7 +112,7 @@ export const getPureBottomSheet = <PropList extends OverlayPropList>() => {
             style={[styles.innerTransition, { height: height }]}
             duration={300}
           >
-            <View
+            <Pressable
               style={[
                 styles.container,
                 {
@@ -126,7 +126,7 @@ export const getPureBottomSheet = <PropList extends OverlayPropList>() => {
               onLayout={onLayout}
             >
               {overlayProps ? <Component {...overlayProps} /> : null}
-            </View>
+            </Pressable>
           </Transition>
         </OverlayBackground>
       </Transition>
