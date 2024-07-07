@@ -1,13 +1,11 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import React from 'react';
-import {
-  usePureBottomSheet,
-  usePureLoading,
-  usePureModal,
-} from 'react-native-pure-overlay';
 import type { DefaultModalProps } from '../components/DefaultModal';
 import type { SampleBottomSheetProps } from '../components/SampleBottomSheet';
+import { useDefaultModal } from '../hooks/useDefaultModal';
+import { useLoading } from '../hooks/useLoading';
+import { useSampleBottomSheet } from '../hooks/useSampleBottomSheet';
 
 export type ProjectOverlayPropList = {
   default: DefaultModalProps;
@@ -16,18 +14,12 @@ export type ProjectOverlayPropList = {
 };
 
 const MainScreen = () => {
-  const { openModal, openDeferredModal, closeModal } = usePureModal<
-    ProjectOverlayPropList,
-    'default'
-  >('default');
-
   const { openBottomSheet, openDeferredBottomSheet, closeBottomSheet } =
-    usePureBottomSheet<ProjectOverlayPropList, 'sample'>('sample');
+    useSampleBottomSheet();
 
-  const { showLoading, hideLoading } = usePureLoading<
-    ProjectOverlayPropList,
-    'loading'
-  >('loading');
+  const { openModal, openDeferredModal, closeModal } = useDefaultModal();
+
+  const { showLoading, hideLoading } = useLoading();
 
   const openDefaultModal = () => {
     openModal({

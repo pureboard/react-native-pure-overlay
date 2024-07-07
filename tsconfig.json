@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-pure-overlay": ["./src/index"]
+      "@pureboard/react-native-pure-overlay": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

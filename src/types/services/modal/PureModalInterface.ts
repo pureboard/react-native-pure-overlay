@@ -4,15 +4,24 @@ import type { BasePureModalProps } from './BasePureModalProps';
 import type { PureModalResolveType } from './PureModalResolveType';
 
 export interface PureModalInterface<
-  OverlayProps extends Record<Key, any> = any,
+  OverlayProps extends Record<Key, any>,
+  ResolveKeys extends any = undefined,
 > {
   openModal: (props: OverlayProps & BasePureModalProps) => void;
   openDeferredModal: <P extends any = undefined>(
     _props:
       | (OverlayProps & BasePureModalProps)
       | ((
-          d: Deferred<PureModalResolveType<P>>
+          d: Deferred<
+            ResolveKeys extends undefined
+              ? PureModalResolveType<P>
+              : PureModalResolveType<P> | ResolveKeys
+          >
         ) => OverlayProps & BasePureModalProps)
-  ) => Promise<PureModalResolveType<P>>;
+  ) => Promise<
+    ResolveKeys extends undefined
+      ? PureModalResolveType<P>
+      : PureModalResolveType<P> | ResolveKeys
+  >;
   closeModal: () => void;
 }

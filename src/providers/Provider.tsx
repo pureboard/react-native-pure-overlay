@@ -44,11 +44,15 @@ export const useSetPureModalHandler = () => {
 export const usePureModal = <
   PropList extends OverlayPropList,
   K extends keyof PropList,
+  ResolveKeys extends any = undefined,
 >(
   overlayId: K
 ) => {
   const { getModalHandler } = useContext(Context);
-  return getModalHandler(overlayId) as PureModalInterface<PropList[K]>;
+  return getModalHandler(overlayId) as PureModalInterface<
+    PropList[K],
+    ResolveKeys
+  >;
 };
 
 export const useSetPureBottomSheetHandler = () => {
@@ -58,12 +62,14 @@ export const useSetPureBottomSheetHandler = () => {
 export const usePureBottomSheet = <
   PropList extends OverlayPropList,
   K extends keyof PropList,
+  ResolveKeys extends any = undefined,
 >(
   overlayId: K
 ) => {
   const { getBottomSheetHandler } = useContext(Context);
   return getBottomSheetHandler(overlayId) as PureBottomSheetInterface<
-    PropList[K]
+    PropList[K],
+    ResolveKeys
   >;
 };
 
