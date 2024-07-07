@@ -138,7 +138,8 @@ import { usePureModal } from '@pureboard/react-native-pure-board';
 
 const { openModal, openDeferredModal, closeModal } = usePureModal<
   ProjectOverlayPropList,
-  'custom'
+  'custom',
+  'pressedConfirm'
 >('custom');
 ```
 
@@ -263,7 +264,11 @@ BottomSheet도 전체적으로 Modal과 동일합니다. resolveKeys를 통해 B
 
 ```tsx
 const { openBottomSheet, openDeferredBottomSheet, closeBottomSheet } =
-  usePureBottomSheet<ProjectOverlayPropList, 'sample'>('sample');
+  usePureBottomSheet<
+    ProjectOverlayPropList,
+    'sample',
+    'pressedButton' | 'pressedCloseButton'
+  >('sample');
 
 const openSampleBottomSheet = () => {
   openBottomSheet({
