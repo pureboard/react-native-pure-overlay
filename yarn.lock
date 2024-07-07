@@ -3120,6 +3120,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pureboard/react-native-pure-transition@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@pureboard/react-native-pure-transition@npm:0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 295d28aa06ddb928205cf8731c16e09a3e2e54c46354d76f4d3f22a5a847e79f459e80bfa6d360fa69e254541869e65f1ed8a9a89ca6b8baf92bb8b6062e0dc0
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-clean@npm:13.6.8":
   version: 13.6.8
   resolution: "@react-native-community/cli-clean@npm:13.6.8"
@@ -14755,6 +14765,7 @@ __metadata:
   dependencies:
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
+    "@pureboard/react-native-pure-transition": ^0.1.0
     "@react-native/eslint-config": ^0.73.1
     "@release-it/conventional-changelog": ^5.0.0
     "@types/jest": ^29.5.5

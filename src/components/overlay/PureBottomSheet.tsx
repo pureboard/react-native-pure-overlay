@@ -4,13 +4,17 @@ import { Pressable, StyleSheet, useWindowDimensions } from 'react-native';
 import { useLayout } from '../../hooks/useLayout';
 import { useSetPureBottomSheetHandler } from '../../providers/Provider';
 
+import {
+  Fade,
+  PureTransition,
+  SlideDown,
+} from '@pureboard/react-native-pure-transition';
 import type { PureBottomSheetProps } from '../../types/services/bottomSheet/PureBottomSheetProps';
 import type { PureBottomSheetResolveType } from '../../types/services/bottomSheet/PureBottomSheetResolveType';
 import type { OverlayPropList } from '../../types/services/common/OverlayParamList';
 import type { PureOverlayProviderProps } from '../../types/services/common/PureOverlayProviderProps';
 import { deferred, type Deferred } from '../../utils/deferred';
 import OverlayBackground from '../shared/OverlayBackground';
-import Transition from '../shared/transition/PureTransition';
 
 export const getPureBottomSheet = <PropList extends OverlayPropList>() => {
   const PureBottomSheet = <Id extends keyof PropList>({
@@ -93,24 +97,22 @@ export const getPureBottomSheet = <PropList extends OverlayPropList>() => {
     const { height, onLayout } = useLayout();
 
     return (
-      <Transition
+      <PureTransition
         isVisible={isVisible}
         style={styles.outerTransition}
-        duration={300}
-        entering={'fade'}
-        exiting={'fade'}
+        entering={Fade.duration(300)}
+        exiting={Fade.duration(300)}
       >
         <OverlayBackground
           onPressBackButton={overlayProps?.onPressBackButton}
           onPressBackDrop={overlayProps?.onPressBackDrop}
           opacity={overlayProps?.backgroundOpacity}
         >
-          <Transition
+          <PureTransition
             isVisible={isVisible}
-            entering={'slide-down'}
-            exiting={'slide-down'}
+            entering={SlideDown.duration(300)}
+            exiting={SlideDown.duration(300)}
             style={[styles.innerTransition, { height: height }]}
-            duration={300}
           >
             <Pressable
               style={[
@@ -127,9 +129,9 @@ export const getPureBottomSheet = <PropList extends OverlayPropList>() => {
             >
               {overlayProps ? <Component {...overlayProps} /> : null}
             </Pressable>
-          </Transition>
+          </PureTransition>
         </OverlayBackground>
-      </Transition>
+      </PureTransition>
     );
   };
   return PureBottomSheet;

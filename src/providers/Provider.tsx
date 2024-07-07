@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { Children, useContext, useState } from 'react';
+import { useIsFirstRender } from '../hooks/useIsFirstRender';
 import { usePreservedCallback } from '../hooks/usePreservedCallback';
 import type { PureBottomSheetInterface } from '../types/services/bottomSheet/PureBottomSheetInterface';
 import type { OverlayPropList } from '../types/services/common/OverlayParamList';
@@ -10,6 +11,12 @@ import type { ValueOf } from '../types/utils/valueOf';
 export interface ProviderProps {
   children: React.ReactNode;
 }
+
+const pureOverlayComponentNames = [
+  'PureModal',
+  'PureBottomSheet',
+  'PureLoading',
+];
 
 const Context = React.createContext<any>(null);
 
@@ -77,6 +84,7 @@ export const usePureLoading = <
 export const Provider = <PropList extends OverlayPropList>({
   children,
 }: ProviderProps) => {
+  const isFirstRender = useIsFirstRender();
   const [pureOverlayHandlers, setPureOverlayHandlers] = useState<
     Partial<
       Record<
@@ -139,6 +147,22 @@ export const Provider = <PropList extends OverlayPropList>({
       pureOverlayHandlers[overlayId] ?? defaultLoadingHandler
   );
 
+  // PureOverlay components 내부에서 useEffect를 통해 Handler를 할당하기 때문에
+  // Handler를 모두 할당한 후에 children을 렌더링해주기 위해 최초 렌더시에는 PureOverlay components만 렌더링 해줌
+  const renderingChildren = Children.toArray(children)
+    .filter(
+      (it) =>
+        !isFirstRender ||
+        pureOverlayComponentNames.includes(
+          (it as { type: { name: string } })?.type?.name
+        )
+    )
+    .map((it) => (
+      <React.Fragment key={(it as { type: { name: string } })?.type?.name}>
+        {it}
+      </React.Fragment>
+    ));
+
   return (
     <Context.Provider
       value={{
@@ -150,7 +174,7 @@ export const Provider = <PropList extends OverlayPropList>({
         getLoadingHandler,
       }}
     >
-      {children}
+      {renderingChildren}
     </Context.Provider>
   );
 };

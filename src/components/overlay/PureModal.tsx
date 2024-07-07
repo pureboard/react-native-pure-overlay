@@ -22,10 +22,9 @@ export const getPureModal = <PropList extends OverlayPropList>() => {
 
     const setModalHandler = useSetPureModalHandler();
 
-    const openModal = useCallback(
-      (props: OverlayProps) => setOverlayProps(props),
-      []
-    );
+    const openModal = useCallback((props: OverlayProps) => {
+      setOverlayProps(props);
+    }, []);
 
     const openDeferredModal = useCallback(function <P = undefined>(
       _props:
@@ -77,7 +76,9 @@ export const getPureModal = <PropList extends OverlayPropList>() => {
       return d.promise;
     }, []);
 
-    const closeModal = useCallback(() => setOverlayProps(null), []);
+    const closeModal = useCallback(() => {
+      setOverlayProps(null);
+    }, []);
 
     useEffect(() => {
       setModalHandler({ openModal, openDeferredModal, closeModal }, overlayId);
