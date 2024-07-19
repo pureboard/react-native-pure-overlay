@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Pressable, StyleSheet, useWindowDimensions } from 'react-native';
+import { Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useLayout } from '../../hooks/useLayout';
 import { useSetPureBottomSheetHandler } from '../../providers/Provider';
 
@@ -107,30 +107,29 @@ export const getPureBottomSheet = <PropList extends OverlayPropList>() => {
           onPressBackButton={overlayProps?.onPressBackButton}
           onPressBackDrop={overlayProps?.onPressBackDrop}
           opacity={overlayProps?.backgroundOpacity}
+        />
+        <PureTransition
+          isVisible={isVisible}
+          entering={SlideDown.duration(300)}
+          exiting={SlideDown.duration(300)}
+          style={[styles.innerTransition, { height: height }]}
         >
-          <PureTransition
-            isVisible={isVisible}
-            entering={SlideDown.duration(300)}
-            exiting={SlideDown.duration(300)}
-            style={[styles.innerTransition, { height: height }]}
+          <View
+            style={[
+              styles.container,
+              {
+                width: screenWidth,
+                height: overlayProps?.fullScreen ? screenHeight : 'auto',
+                borderTopLeftRadius: overlayProps?.fullScreen ? 0 : 8,
+                borderTopRightRadius: overlayProps?.fullScreen ? 0 : 8,
+              },
+              overlayProps?.containerStyle,
+            ]}
+            onLayout={onLayout}
           >
-            <Pressable
-              style={[
-                styles.container,
-                {
-                  width: screenWidth,
-                  height: overlayProps?.fullScreen ? screenHeight : 'auto',
-                  borderTopLeftRadius: overlayProps?.fullScreen ? 0 : 8,
-                  borderTopRightRadius: overlayProps?.fullScreen ? 0 : 8,
-                },
-                overlayProps?.containerStyle,
-              ]}
-              onLayout={onLayout}
-            >
-              {overlayProps ? <Component {...overlayProps} /> : null}
-            </Pressable>
-          </PureTransition>
-        </OverlayBackground>
+            {overlayProps ? <Component {...overlayProps} /> : null}
+          </View>
+        </PureTransition>
       </PureTransition>
     );
   };
