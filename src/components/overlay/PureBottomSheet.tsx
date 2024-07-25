@@ -107,6 +107,7 @@ export const getPureBottomSheet = <PropList extends OverlayPropList>() => {
           onPressBackButton={overlayProps?.onPressBackButton}
           onPressBackDrop={overlayProps?.onPressBackDrop}
           opacity={overlayProps?.backgroundOpacity}
+          isVisible={isVisible}
         />
         <PureTransition
           isVisible={isVisible}

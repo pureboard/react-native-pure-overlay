@@ -15,6 +15,7 @@ interface OverlayBackgroundProps {
   onPressBackButton?: () => void;
   onPressBackDrop?: () => void;
   opacity?: number;
+  isVisible?: boolean;
 }
 
 const OverlayBackground = ({
@@ -23,13 +24,17 @@ const OverlayBackground = ({
   onPressBackButton,
   onPressBackDrop,
   opacity = 0.3,
+  isVisible,
 }: OverlayBackgroundProps) => {
   const { width, height } = useWindowDimensions();
 
   const onBackPress = useCallback(() => {
-    onPressBackButton?.();
-    return true;
-  }, [onPressBackButton]);
+    if (isVisible) {
+      onPressBackButton?.();
+      return true;
+    }
+    return false;
+  }, [onPressBackButton, isVisible]);
 
   //안드로이드 물리버튼 핸들링을 위해 listener 등록
   useAndroidBackHandler({ onBackPress });
