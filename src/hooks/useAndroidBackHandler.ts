@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BackHandler } from 'react-native';
+import { BackHandler, Platform } from 'react-native';
 
 const useAndroidBackHandler = ({
   onBackPress,
@@ -7,6 +7,9 @@ const useAndroidBackHandler = ({
   onBackPress: () => boolean;
 }) => {
   useEffect(() => {
+    if (Platform.OS === 'ios') {
+      return;
+    }
     BackHandler.addEventListener('hardwareBackPress', onBackPress);
 
     return () => {
