@@ -7,14 +7,12 @@ const useAndroidBackHandler = ({
   onBackPress: () => boolean;
 }) => {
   useEffect(() => {
-    if (Platform.OS === 'ios') {
-      return;
-    }
-    BackHandler.addEventListener('hardwareBackPress', onBackPress);
+    const listener = BackHandler.addEventListener(
+      'hardwareBackPress',
+      onBackPress
+    );
 
-    return () => {
-      BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-    };
+    return listener.remove;
   }, [onBackPress]);
 };
 export default useAndroidBackHandler;
