@@ -24,7 +24,7 @@ const OverlayBackground = ({
   onPressBackButton,
   onPressBackDrop,
   opacity = 0.3,
-  isVisible,
+  isVisible = true,
 }: OverlayBackgroundProps) => {
   const { width, height } = useWindowDimensions();
 
