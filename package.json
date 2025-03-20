@@ -1,6 +1,6 @@
 {
   "name": "@pureboard/react-native-pure-overlay",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Easy, Light, Awesome react native overlay library. Whether it's a modal, bottom sheet, alert, loading screen, or anything else you need, this library can handle it all.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
